@@ -120,7 +120,7 @@ class _FormCadastroPetScreenState extends State<FormCadastroPetScreen> {
                             cor: corPet
                         );
                         if (pet != null) {
-                          service.editPet(pet.id, newPet);
+                          service.editPet(pet.id.toString(), newPet);
                         } else {
                           service.addPet(newPet);
                         }

@@ -21,7 +21,7 @@ class PetService {
         sexo: "Macho",
         cor: "Preto",
         bio: "Sou um totó bem esperto",
-        id: "1"
+        id: 1
     ));
     _petList.add(Pet(
         nome: "Arnaldo",
@@ -31,7 +31,7 @@ class PetService {
         sexo: "Macho",
         cor: "Preto",
         bio: "Sou um pinsher elétrico",
-        id: "2"
+        id: 2
     ));
   }
 
@@ -49,7 +49,8 @@ class PetService {
       cor: pet.cor,
       imageUrl: 'assets/images/toto.png',
     );
-    DbUtil.insertData('pets', newPet);
+    // print(newPet.toMap());
+    DbUtil.insertData('pets', newPet.toMap());
 
   }
 
