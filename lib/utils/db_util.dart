@@ -21,4 +21,10 @@ class DbUtil {
       cor VARCHAR(20), bio TEXT)
     """);
   }
+
+  static Future<void> insertData(String table, Map<String, Object> dados) async {
+    final db = await database();
+    await db.insert(table, dados,
+        conflictAlgorithm: sql.ConflictAlgorithm.replace);
+  }
 }
