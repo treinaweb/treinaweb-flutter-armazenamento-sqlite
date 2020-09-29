@@ -4,7 +4,7 @@ import 'package:lifepet_app/models/pet_model.dart';
 import 'package:lifepet_app/utils/db_util.dart';
 
 class PetService {
-  final List<Pet> _petList = [];
+  List<Pet> _petList = [];
 
   static final PetService _singleton = PetService._internal();
 
@@ -35,8 +35,19 @@ class PetService {
     ));
   }
 
-  List getAllPets() {
-    print(DbUtil.getData('pets'));
+  Future<List> getAllPets() async {
+    final dataList = await DbUtil.getData('pets');
+    _petList = dataList.map((pets) => Pet(
+      id: pets['id'],
+      nome: pets['nome'],
+      imageUrl: pets['imageUrl'],
+      descricao: pets['descricao'],
+      idade: pets['idade'],
+      cor: pets['cor'],
+      sexo: pets['sexo'],
+      bio: pets['bio'],
+    )).toList();
+    print(_petList);
     return _petList;
   }
 
