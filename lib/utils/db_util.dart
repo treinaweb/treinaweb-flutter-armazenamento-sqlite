@@ -27,4 +27,9 @@ class DbUtil {
     await db.insert(table, dados,
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
   }
+
+  static Future<List<Map<String, dynamic>>> getData(String table) async {
+    final db = await database();
+    return db.query(table);
+  }
 }

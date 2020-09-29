@@ -36,6 +36,7 @@ class PetService {
   }
 
   List getAllPets() {
+    print(DbUtil.getData('pets'));
     return _petList;
   }
 
