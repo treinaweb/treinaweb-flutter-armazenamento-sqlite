@@ -5,41 +5,62 @@ import 'package:lifepet_app/services/pet_service.dart';
 
 import 'components/pet_card.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   PetService service = PetService();
   List<Pet> pets = List();
+  Future<List> _loadPets;
 
-  HomeScreen() {
-    _getAllPets();
+  @override
+  void initState() {
+    // TODO: implement initState
+    _loadPets = _getAllPets();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: ListView.builder(
-        itemCount: pets.length,
-        itemBuilder: (context, index) {
-          return petCard(context, index, pets[index]);
-        },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => FormCadastroPetScreen(),
+    return FutureBuilder(
+      future: _loadPets,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        if (snapshot.hasData) {
+          pets = snapshot.data;
+          return Scaffold(
+            backgroundColor: Colors.white,
+            body: ListView.builder(
+              itemCount: pets.length,
+              itemBuilder: (context, index) {
+                return petCard(context, index, pets[index]);
+              },
+            ),
+            floatingActionButton: FloatingActionButton.extended(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => FormCadastroPetScreen(),
+                  ),
+                );
+              },
+              label: Text("Cadastrar"),
+              icon: Icon(Icons.pets),
+              backgroundColor: Colors.redAccent,
             ),
           );
-        },
-        label: Text("Cadastrar"),
-        icon: Icon(Icons.pets),
-        backgroundColor: Colors.redAccent,
-      ),
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      }
     );
   }
 
-  void _getAllPets() {
-    List list = service.getAllPets();
-    pets = list;
+  Future<List> _getAllPets() async {
+    return await service.getAllPets();
   }
 }
