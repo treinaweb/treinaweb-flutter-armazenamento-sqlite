@@ -15,6 +15,10 @@ class DbUtil {
   }
 
   static void _createDb(sql.Database db) {
-
+    db.execute("""
+      CREATE TABLE pets (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR(50),
+      imageUrl TEXT, descricao TEXT, idade INTEGER, sexo VARCHAR(8), 
+      cor VARCHAR(20), bio TEXT)
+    """);
   }
 }
