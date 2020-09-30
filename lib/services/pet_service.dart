@@ -16,15 +16,11 @@ class PetService {
     DbUtil.insertData('pets', pet.toMap());
   }
 
-  // void editPet(int id, Pet newPet) {
-  //   Pet petEditar = getPet(id);
-  //   petEditar.nome = newPet.nome;
-  //   petEditar.descricao = newPet.descricao;
-  //   petEditar.idade = newPet.idade;
-  //   petEditar.sexo = newPet.sexo;
-  //   petEditar.cor = newPet.cor;
-  //   petEditar.bio = newPet.bio;
-  // }
+  void editPet(int id, Pet newPet) {
+    String whereString = "id = ?";
+    List<dynamic> whereArgumento = [id];
+    DbUtil.editData('pets', newPet.toMap(), whereString, whereArgumento);
+  }
 
   Future<Pet> getPet(int id) async {
     List<String> colunas = [
