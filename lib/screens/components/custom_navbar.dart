@@ -37,7 +37,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
                     });
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (_) => PerfilPetScreen(id: widget.pet.id.toString(),),
+                        builder: (_) => PerfilPetScreen(id: widget.pet.id,),
                       ),
                     );
                   },
