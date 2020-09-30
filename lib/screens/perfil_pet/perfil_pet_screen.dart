@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lifepet_app/models/pet_model.dart';
 import 'package:lifepet_app/screens/form_cadastro_pet/form_cadastro_pet_screen.dart';
 import 'package:lifepet_app/screens/components/custom_navbar.dart';
+import 'package:lifepet_app/screens/form_editar_pet/form_editar_pet_screen.dart';
 import 'package:lifepet_app/services/pet_service.dart';
 
 import 'components/cartao_info_pet.dart';
@@ -135,7 +136,7 @@ class _PerfilPetScreenState extends State<PerfilPetScreen> {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => FormCadastroPetScreen(id: pet.id.toString()),
+                    builder: (_) => FormEditarPetScreen(id: pet.id),
                   ),
                 );
               },

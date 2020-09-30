@@ -16,10 +16,10 @@ class PetService {
     DbUtil.insertData('pets', pet.toMap());
   }
 
-  void editPet(int id, Pet newPet) {
+  void editPet(int id, Pet pet) {
     String whereString = "id = ?";
     List<dynamic> whereArgumento = [id];
-    DbUtil.editData('pets', newPet.toMap(), whereString, whereArgumento);
+    DbUtil.editData('pets', pet.toMap(), whereString, whereArgumento);
   }
 
   Future<Pet> getPet(int id) async {
