@@ -32,4 +32,11 @@ class DbUtil {
     final db = await database();
     return db.query(table);
   }
+
+  static Future<List<Map<String, dynamic>>> getDataWhere(String table, List<String> colunas,
+      String whereString, List<dynamic> whereArgumento) async {
+    final db = await database();
+    return db.query(table, columns: colunas, where: whereString,
+        whereArgs: whereArgumento);
+  }
 }

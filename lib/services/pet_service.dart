@@ -37,33 +37,12 @@ class PetService {
 
   Future<List> getAllPets() async {
     final dataList = await DbUtil.getData('pets');
-    _petList = dataList.map((pets) => Pet(
-      id: pets['id'],
-      nome: pets['nome'],
-      imageUrl: pets['imageUrl'],
-      descricao: pets['descricao'],
-      idade: pets['idade'],
-      cor: pets['cor'],
-      sexo: pets['sexo'],
-      bio: pets['bio'],
-    )).toList();
-    print(_petList);
+    _petList = dataList.map((pets) => Pet.fromMap(pets)).toList();
     return _petList;
   }
 
   void addPet(Pet pet){
-    final newPet = Pet(
-      nome: pet.nome,
-      bio: pet.bio,
-      idade: pet.idade,
-      sexo: pet.sexo,
-      descricao: pet.descricao,
-      cor: pet.cor,
-      imageUrl: 'assets/images/toto.png',
-    );
-    // print(newPet.toMap());
-    DbUtil.insertData('pets', newPet.toMap());
-
+    DbUtil.insertData('pets', pet.toMap());
   }
 
   void editPet(String id, Pet newPet) {
