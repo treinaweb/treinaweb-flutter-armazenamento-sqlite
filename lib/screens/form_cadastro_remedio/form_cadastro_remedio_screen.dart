@@ -15,7 +15,7 @@ class FormCadastroRemedioScreen extends StatelessWidget {
 
 
   FormCadastroRemedioScreen({this.id}){
-    _getPet(id);
+    // _getPet(id);
   }
 
 
@@ -75,7 +75,7 @@ class FormCadastroRemedioScreen extends StatelessWidget {
     );
   }
 
-  void _getPet(String id) {
-    pet = petService.getPet(id);
-  }
+  // void _getPet(String id) {
+  //   pet = petService.getPet(id);
+  // }
 }

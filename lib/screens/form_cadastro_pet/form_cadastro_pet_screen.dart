@@ -29,7 +29,7 @@ class _FormCadastroPetScreenState extends State<FormCadastroPetScreen> {
   void initState() {
     super.initState();
     if (widget.id != null) {
-      _getPet(widget.id);
+      // _getPet(widget.id);
     }
     if (pet != null) {
       _nomeController.text = pet.nome;
@@ -120,7 +120,7 @@ class _FormCadastroPetScreenState extends State<FormCadastroPetScreen> {
                             cor: corPet
                         );
                         if (pet != null) {
-                          service.editPet(pet.id.toString(), newPet);
+                          // service.editPet(pet.id.toString(), newPet);
                         } else {
                           service.addPet(newPet);
                         }
@@ -146,7 +146,7 @@ class _FormCadastroPetScreenState extends State<FormCadastroPetScreen> {
     );
   }
 
-  void _getPet(String id) {
-    pet = petService.getPet(id);
-  }
+  // void _getPet(String id) {
+  //   pet = petService.getPet(id);
+  // }
 }

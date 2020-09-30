@@ -15,7 +15,7 @@ class RemedioPetScreen extends StatelessWidget {
   Pet pet;
 
   RemedioPetScreen({this.id}){
-    _getPet(id);
+    // _getPet(id);
     _getRemedio(id);
   }
 
@@ -92,9 +92,9 @@ class RemedioPetScreen extends StatelessWidget {
     );
   }
 
-  void _getPet(String id) {
-    pet = petService.getPet(id);
-  }
+  // void _getPet(String id) {
+  //   pet = petService.getPet(id);
+  // }
 
   void _getRemedio(String id) {
     remedioList = remedioService.getRemediosPet(id);
