@@ -3,7 +3,7 @@ import 'package:lifepet_app/models/pet_model.dart';
 class Remedio {
   String nome;
   String data;
-  String id;
+  int id;
   int pet;
 
   Remedio({

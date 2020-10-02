@@ -21,12 +21,7 @@ class RemedioService{
     return dataList.map((remedios) => Remedio.fromMap(remedios)).toList();
   }
 
-  void addRemedio(Remedio remedio) {
-    _remedioList.add(Remedio(
-      nome: remedio.nome,
-      data: remedio.data,
-      id: Random().nextInt(100).toString(),
-      pet: remedio.pet
-    ));
+  void addRemedio(Remedio remedio) async {
+    DbUtil.insertData('remedios', remedio.toMap());
   }
 }

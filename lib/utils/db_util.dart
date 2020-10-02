@@ -23,7 +23,7 @@ class DbUtil {
     db.execute("""CREATE TABLE remedios (id INTEGER PRIMARY KEY AUTOINCREMENT, 
     nome VARCHAR(50), data DATETIME, pet INTEGER,
     FOREIGN KEY (pet) REFERENCES pets (id) ON DELETE NO ACTION 
-    ON UPDATE NO ACTION""");
+    ON UPDATE NO ACTION)""");
   }
 
   static Future<void> insertData(String table, Map<String, Object> dados) async {
