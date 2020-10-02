@@ -84,15 +84,32 @@ class _RemedioPetScreenState extends State<RemedioPetScreen> {
                     ],
                   ),
                 ),
-                // Expanded(
-                //   child: ListView.builder(
-                //     padding: EdgeInsets.all(10),
-                //     itemCount: remedioList.length,
-                //     itemBuilder: (context, index) {
-                //       return remedioCard(context, index, remedioList[index]);
-                //     },
-                //   ),
-                // ),
+                FutureBuilder(
+                  future: _loadRemedios,
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      remedioList = snapshot.data;
+                      return Expanded(
+                        child: ListView.builder(
+                          padding: EdgeInsets.all(10),
+                          itemCount: remedioList.length,
+                          itemBuilder: (context, index) {
+                            return remedioCard(
+                                context, index, remedioList[index]);
+                          },
+                        ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      return Center(
+                        child: Text("Este pet não possui remédios"),
+                      );
+                    }
+                  }
+                ),
               ],
             ),
             floatingActionButton: FloatingActionButton(
@@ -100,7 +117,7 @@ class _RemedioPetScreenState extends State<RemedioPetScreen> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (_) =>
-                        FormCadastroRemedioScreen(id: pet.id.toString(),),
+                        FormCadastroRemedioScreen(id: pet.id,),
                   ),
                 );
               },

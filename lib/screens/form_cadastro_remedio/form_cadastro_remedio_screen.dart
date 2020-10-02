@@ -6,7 +6,7 @@ import 'package:lifepet_app/services/pet_service.dart';
 import 'package:lifepet_app/services/remedio_service.dart';
 
 class FormCadastroRemedioScreen extends StatelessWidget {
-  String id;
+  int id;
   final _nomeController = TextEditingController();
   final _dataController = TextEditingController();
   final PetService petService = PetService();
