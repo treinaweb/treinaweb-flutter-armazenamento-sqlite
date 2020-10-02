@@ -56,7 +56,7 @@ class FormCadastroRemedioScreen extends StatelessWidget {
                         remedioService.addRemedio(novoRemedio);
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (_) => RemedioPetScreen(id: pet.id.toString()),
+                            builder: (_) => RemedioPetScreen(id: pet.id),
                           ),
                         );
                       },
