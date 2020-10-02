@@ -51,7 +51,7 @@ class FormCadastroRemedioScreen extends StatelessWidget {
                         Remedio novoRemedio = Remedio(
                             nome: _nomeController.text,
                             data: _dataController.text,
-                            pet: pet
+                            // pet: pet
                         );
                         remedioService.addRemedio(novoRemedio);
                         Navigator.of(context).pushReplacement(

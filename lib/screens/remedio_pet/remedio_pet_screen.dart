@@ -28,6 +28,7 @@ class _RemedioPetScreenState extends State<RemedioPetScreen> {
   void initState() {
     // TODO: implement initState
     _loadPet = _getPet(widget.id);
+    _loadRemedios = _getRemedio(widget.id);
     super.initState();
   }
 
@@ -119,8 +120,8 @@ class _RemedioPetScreenState extends State<RemedioPetScreen> {
     );
   }
 
-  void _getRemedio(String id) {
-    remedioList = remedioService.getRemediosPet(id);
+  Future<List> _getRemedio(int id) async {
+    return await remedioService.getRemediosPet(id);
   }
 
   Future<Pet> _getPet(int id) async {
